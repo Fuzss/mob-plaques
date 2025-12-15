@@ -1,12 +1,12 @@
 package fuzs.mobplaques.client.gui.plaque;
 
 import fuzs.mobplaques.client.renderer.entity.state.MobPlaquesRenderState;
-import fuzs.puzzleslib.api.core.v1.utility.ResourceLocationHelper;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.LivingEntity;
 
 public class ArmorPlaqueRenderer extends MobPlaqueRenderer {
-    private static final ResourceLocation ARMOR_FULL_SPRITE = ResourceLocationHelper.withDefaultNamespace(
+    private static final Identifier ARMOR_FULL_SPRITE = Identifier.withDefaultNamespace(
             "hud/armor_full");
 
     @Override
@@ -15,7 +15,7 @@ public class ArmorPlaqueRenderer extends MobPlaqueRenderer {
     }
 
     @Override
-    protected ResourceLocation getSprite(MobPlaquesRenderState renderState) {
+    protected Identifier getSprite(MobPlaquesRenderState renderState) {
         return ARMOR_FULL_SPRITE;
     }
 

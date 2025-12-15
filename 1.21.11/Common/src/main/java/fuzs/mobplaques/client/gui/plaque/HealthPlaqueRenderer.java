@@ -3,16 +3,16 @@ package fuzs.mobplaques.client.gui.plaque;
 import fuzs.mobplaques.MobPlaques;
 import fuzs.mobplaques.client.renderer.entity.state.MobPlaquesRenderState;
 import net.minecraft.client.gui.Gui;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
-import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.Nullable;
 
 public class HealthPlaqueRenderer extends TransitionPlaqueRenderer {
-    private static final ResourceLocation HEART_VEHICLE_FULL_SPRITE = MobPlaques.id("hud/heart/vehicle_full");
+    private static final Identifier HEART_VEHICLE_FULL_SPRITE = MobPlaques.id("hud/heart/vehicle_full");
 
     public HealthPlaqueRenderer() {
         super(0x1EB100, 0xED230D);
@@ -29,7 +29,7 @@ public class HealthPlaqueRenderer extends TransitionPlaqueRenderer {
     }
 
     @Override
-    protected ResourceLocation getSprite(MobPlaquesRenderState renderState) {
+    protected Identifier getSprite(MobPlaquesRenderState renderState) {
         return renderState.sprite;
     }
 
@@ -47,17 +47,17 @@ public class HealthPlaqueRenderer extends TransitionPlaqueRenderer {
         return "Health";
     }
 
-    private ResourceLocation getSprite(LivingEntity livingEntity) {
+    private Identifier getSprite(LivingEntity livingEntity) {
         return isMount(livingEntity) ? HEART_VEHICLE_FULL_SPRITE : getSprite(forEntity(livingEntity), livingEntity);
     }
 
-    public static ResourceLocation getSprite(Gui.HeartType heartType) {
+    public static Identifier getSprite(Gui.HeartType heartType) {
         return getSprite(heartType, null);
     }
 
-    private static ResourceLocation getSprite(Gui.HeartType heartType, @Nullable LivingEntity livingEntity) {
-        ResourceLocation resourceLocation = heartType.getSprite(isHardcore(livingEntity), false, false);
-        return MobPlaques.id(resourceLocation.getPath());
+    private static Identifier getSprite(Gui.HeartType heartType, @Nullable LivingEntity livingEntity) {
+        Identifier identifier = heartType.getSprite(isHardcore(livingEntity), false, false);
+        return MobPlaques.id(identifier.getPath());
     }
 
     private static boolean isHardcore(@Nullable LivingEntity livingEntity) {

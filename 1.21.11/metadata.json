@@ -1,0 +1,61 @@
+{
+    "mod": {
+        "id": "mobplaques",
+        "group": "fuzs.mobplaques",
+        "name": "Mob Plaques",
+        "version": "21.11.0",
+        "authors": [
+            "Fuzs"
+        ],
+        "description": "Neat, tiny attribute displays for all mobs with great customization!",
+        "license": "MPL-2.0"
+    },
+    "dependencies": [
+        {
+            "name": "fabricapi",
+            "type": "required",
+            "platforms": [
+                "fabric"
+            ]
+        },
+        {
+            "name": "forgeconfigapiport",
+            "type": "required",
+            "platforms": [
+                "fabric"
+            ]
+        },
+        {
+            "name": "puzzleslib",
+            "type": "required",
+            "platforms": [
+                "fabric",
+                "neoforge"
+            ]
+        }
+    ],
+    "links": [
+        {
+            "name": "github",
+            "slug": "mobplaques"
+        },
+        {
+            "name": "curseforge",
+            "slug": "mob-plaques",
+            "id": "686434"
+        },
+        {
+            "name": "modrinth",
+            "slug": "mob-plaques",
+            "id": "3b1CFIR5"
+        }
+    ],
+    "environments": {
+        "client": "required",
+        "server": "unsupported"
+    },
+    "platforms": [
+        "fabric",
+        "neoforge"
+    ]
+}

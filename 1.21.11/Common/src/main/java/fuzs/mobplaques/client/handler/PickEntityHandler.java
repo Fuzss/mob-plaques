@@ -2,21 +2,22 @@ package fuzs.mobplaques.client.handler;
 
 import fuzs.mobplaques.MobPlaques;
 import fuzs.mobplaques.config.ClientConfig;
+import fuzs.puzzleslib.api.util.v1.EntityHelper;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.util.Mth;
 import net.minecraft.util.profiling.Profiler;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.boss.EnderDragonPart;
 import net.minecraft.world.entity.projectile.ProjectileUtil;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
-import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.Nullable;
 
 import java.util.UUID;
 
@@ -25,21 +26,15 @@ public class PickEntityHandler {
     private static UUID crosshairPickEntity;
     private static int pickDelay;
 
-    @Nullable
-    public static UUID getCrosshairPickEntity() {
+    public static @Nullable UUID getCrosshairPickEntity() {
         return crosshairPickEntity;
     }
 
-    public static void onStartClientTick(Minecraft minecraft) {
-        if (minecraft.level != null && !minecraft.isPaused()) {
-            if (pickDelay > 0) {
-                pickDelay--;
-            }
-        }
-    }
-
     public static void onBeforeGameRender(Minecraft minecraft, GameRenderer gameRenderer, DeltaTracker deltaTracker) {
-        if (!MobPlaques.CONFIG.get(ClientConfig.class).allowRendering.get()) return;
+        if (!MobPlaques.CONFIG.get(ClientConfig.class).allowRendering.get()) {
+            return;
+        }
+
         pick(minecraft, gameRenderer, deltaTracker.getGameTimeDeltaPartialTick(true));
     }
 
@@ -56,17 +51,16 @@ public class PickEntityHandler {
             if (interactionRange != -1) {
                 blockInteractionRange = entityInteractionRange = interactionRange;
             }
+
             HitResult hitResult = pick(cameraEntity, blockInteractionRange, entityInteractionRange, partialTick);
             if (hitResult instanceof EntityHitResult entityHitResult) {
-                Entity entity = entityHitResult.getEntity();
-                if (entity instanceof EnderDragonPart enderDragonPart) {
-                    entity = enderDragonPart.parentMob;
-                }
+                Entity entity = EntityHelper.getPartEntityParent(entityHitResult.getEntity());
                 crosshairPickEntity = entity.getUUID();
                 pickDelay = MobPlaques.CONFIG.get(ClientConfig.class).pickedEntityDelay * 20;
             } else if (pickDelay == 0) {
                 crosshairPickEntity = null;
             }
+
             Profiler.get().pop();
         }
     }
@@ -94,13 +88,12 @@ public class PickEntityHandler {
                 eyePosition,
                 vec3,
                 aABB,
-                entityX -> (entityX instanceof LivingEntity || entityX instanceof EnderDragonPart)
-                        && !entityX.isSpectator() && entityX.isPickable(),
+                PickEntityHandler::isEntityPickable,
                 interactionRangeSqr);
         return entityHitResult != null
                 && entityHitResult.getLocation().distanceToSqr(eyePosition) < distanceToHitResult ?
-                GameRenderer.filterHitResult(entityHitResult, eyePosition, entityInteractionRange) :
-                GameRenderer.filterHitResult(hitResult, eyePosition, blockInteractionRange);
+                LocalPlayer.filterHitResult(entityHitResult, eyePosition, entityInteractionRange) :
+                LocalPlayer.filterHitResult(hitResult, eyePosition, blockInteractionRange);
     }
 
     /**
@@ -117,5 +110,16 @@ public class PickEntityHandler {
                         ClipContext.Block.VISUAL,
                         hitFluids ? ClipContext.Fluid.ANY : ClipContext.Fluid.NONE,
                         entity));
+    }
+
+    private static boolean isEntityPickable(Entity entity) {
+        return EntityHelper.getPartEntityParent(entity) instanceof LivingEntity && !entity.isSpectator()
+                && entity.isPickable();
+    }
+
+    public static void onStartClientTick(Minecraft minecraft) {
+        if (minecraft.level != null && !minecraft.isPaused()) {
+            if (pickDelay > 0) pickDelay--;
+        }
     }
 }
