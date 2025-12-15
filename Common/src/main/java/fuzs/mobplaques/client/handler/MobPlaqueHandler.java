@@ -71,7 +71,7 @@ public class MobPlaqueHandler {
         return false;
     }
 
-    public static EventResult onRenderNameTag(EntityRenderer<?, ?> entityRenderer, EntityRenderState entityRenderState, PoseStack poseStack, SubmitNodeCollector submitNodeCollector, CameraRenderState cameraRenderState) {
+    public static EventResult onSubmitNameTag(EntityRenderer<?, ?> entityRenderer, EntityRenderState entityRenderState, PoseStack poseStack, SubmitNodeCollector submitNodeCollector, CameraRenderState cameraRenderState) {
         if (entityRenderState.nameTag != null && RenderStateExtraData.has(entityRenderState, RENDER_STATE_PROPERTY)) {
             poseStack.pushPose();
             Vec3 nameTagAttachment = entityRenderState.nameTagAttachment;

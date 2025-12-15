@@ -1,13 +1,14 @@
-package fuzs.mobplaques.client.renderer;
+package fuzs.mobplaques.client.renderer.rendertype;
 
 import com.mojang.blaze3d.pipeline.RenderPipeline;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.VertexFormat;
 import fuzs.mobplaques.MobPlaques;
 import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.rendertype.RenderSetup;
+import net.minecraft.client.renderer.rendertype.RenderType;
 
-public abstract class ModRenderType extends RenderType {
+public final class ModRenderType {
     /**
      * Disable depth write as it prevents water behind the text background from rendering.
      *
@@ -25,18 +26,11 @@ public abstract class ModRenderType extends RenderType {
     /**
      * @see RenderType#TEXT_BACKGROUND
      */
-    private static final RenderType TEXT_BACKGROUND = create(MobPlaques.id("text_background").toString(),
-            1536,
-            false,
-            true,
-            TEXT_BACKGROUND_PIPELINE,
-            CompositeState.builder()
-                    .setTextureState(NO_TEXTURE)
-                    .setLightmapState(LIGHTMAP)
-                    .createCompositeState(false));
+    private static final RenderType TEXT_BACKGROUND = RenderType.create(MobPlaques.id("text_background").toString(),
+            RenderSetup.builder(TEXT_BACKGROUND_PIPELINE).useLightmap().sortOnUpload().createRenderSetup());
 
-    private ModRenderType(String string, int i, boolean bl, boolean bl2, Runnable runnable, Runnable runnable2) {
-        super(string, i, bl, bl2, runnable, runnable2);
+    private ModRenderType() {
+        // NO-OP
     }
 
     public static RenderType textBackground() {

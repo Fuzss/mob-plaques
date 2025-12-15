@@ -2,13 +2,13 @@ package fuzs.mobplaques.client.gui.plaque;
 
 import fuzs.mobplaques.MobPlaques;
 import fuzs.mobplaques.client.renderer.entity.state.MobPlaquesRenderState;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 
 public class ToughnessPlaqueRenderer extends MobPlaqueRenderer {
-    private static final ResourceLocation TOUGHNESS_FULL_SPRITE = MobPlaques.id("hud/toughness_full");
+    private static final Identifier TOUGHNESS_FULL_SPRITE = MobPlaques.id("hud/toughness_full");
 
     @Override
     public int getValue(MobPlaquesRenderState renderState) {
@@ -16,7 +16,7 @@ public class ToughnessPlaqueRenderer extends MobPlaqueRenderer {
     }
 
     @Override
-    protected ResourceLocation getSprite(MobPlaquesRenderState renderState) {
+    protected Identifier getSprite(MobPlaquesRenderState renderState) {
         return TOUGHNESS_FULL_SPRITE;
     }
 

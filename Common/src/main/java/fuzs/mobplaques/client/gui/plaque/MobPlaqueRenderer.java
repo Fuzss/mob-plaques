@@ -3,20 +3,21 @@ package fuzs.mobplaques.client.gui.plaque;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import fuzs.mobplaques.MobPlaques;
-import fuzs.mobplaques.client.renderer.ModRenderType;
+import fuzs.mobplaques.client.renderer.rendertype.ModRenderType;
 import fuzs.mobplaques.client.renderer.entity.state.MobPlaquesRenderState;
 import fuzs.mobplaques.config.ClientConfig;
 import fuzs.puzzleslib.api.config.v3.ValueCallback;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
-import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.rendertype.RenderType;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.state.EntityRenderState;
+import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.data.AtlasIds;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.contents.objects.AtlasSprite;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.ARGB;
 import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.world.entity.LivingEntity;
@@ -65,7 +66,7 @@ public abstract class MobPlaqueRenderer {
         if (MobPlaques.CONFIG.get(ClientConfig.class).renderBackground) {
             int backgroundColor = Minecraft.getInstance().options.getBackgroundColor(0.25F);
             RenderType renderType =
-                    MobPlaques.CONFIG.get(ClientConfig.class).behindWalls ? RenderType.textBackgroundSeeThrough() :
+                    MobPlaques.CONFIG.get(ClientConfig.class).behindWalls ? RenderTypes.textBackgroundSeeThrough() :
                             ModRenderType.textBackground();
             submitNodeCollector.submitCustomGeometry(poseStack,
                     renderType,
@@ -128,7 +129,7 @@ public abstract class MobPlaqueRenderer {
                         entityRenderState.outlineColor);
     }
 
-    protected abstract ResourceLocation getSprite(MobPlaquesRenderState renderState);
+    protected abstract Identifier getSprite(MobPlaquesRenderState renderState);
 
     public void setupConfig(ModConfigSpec.Builder builder, ValueCallback callback) {
         callback.accept(builder.comment("Allow for rendering this type of plaque.").define("allow_rendering", true),
