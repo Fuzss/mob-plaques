@@ -1,11 +1,11 @@
-package fuzs.mobplaques.client.gui.plaque;
+package fuzs.mobplaques.common.client.gui.plaque;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import fuzs.mobplaques.MobPlaques;
-import fuzs.mobplaques.client.renderer.rendertype.ModRenderType;
-import fuzs.mobplaques.client.renderer.entity.state.MobPlaquesRenderState;
-import fuzs.mobplaques.config.ClientConfig;
+import fuzs.mobplaques.common.MobPlaques;
+import fuzs.mobplaques.common.client.renderer.rendertype.ModRenderType;
+import fuzs.mobplaques.common.client.renderer.entity.state.MobPlaquesRenderState;
+import fuzs.mobplaques.common.config.ClientConfig;
 import fuzs.puzzleslib.common.api.config.v3.ValueCallback;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;

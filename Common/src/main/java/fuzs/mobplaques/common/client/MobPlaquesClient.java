@@ -1,9 +1,9 @@
-package fuzs.mobplaques.client;
+package fuzs.mobplaques.common.client;
 
-import fuzs.mobplaques.client.handler.KeyBindingHandler;
-import fuzs.mobplaques.client.handler.MobPlaqueHandler;
-import fuzs.mobplaques.client.handler.PickEntityHandler;
-import fuzs.mobplaques.client.renderer.rendertype.ModRenderType;
+import fuzs.mobplaques.common.client.handler.KeyBindingHandler;
+import fuzs.mobplaques.common.client.handler.MobPlaqueHandler;
+import fuzs.mobplaques.common.client.handler.PickEntityHandler;
+import fuzs.mobplaques.common.client.renderer.rendertype.ModRenderType;
 import fuzs.puzzleslib.common.api.client.core.v1.ClientModConstructor;
 import fuzs.puzzleslib.common.api.client.core.v1.context.KeyMappingsContext;
 import fuzs.puzzleslib.common.api.client.core.v1.context.RenderPipelinesContext;

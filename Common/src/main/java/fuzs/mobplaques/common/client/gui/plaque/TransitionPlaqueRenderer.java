@@ -1,6 +1,6 @@
-package fuzs.mobplaques.client.gui.plaque;
+package fuzs.mobplaques.common.client.gui.plaque;
 
-import fuzs.mobplaques.client.renderer.entity.state.MobPlaquesRenderState;
+import fuzs.mobplaques.common.client.renderer.entity.state.MobPlaquesRenderState;
 import fuzs.puzzleslib.common.api.config.v3.ValueCallback;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;

@@ -1,6 +1,6 @@
 package fuzs.mobplaques.fabric;
 
-import fuzs.mobplaques.MobPlaques;
+import fuzs.mobplaques.common.MobPlaques;
 import fuzs.puzzleslib.common.api.core.v1.ModConstructor;
 import net.fabricmc.api.ModInitializer;
 

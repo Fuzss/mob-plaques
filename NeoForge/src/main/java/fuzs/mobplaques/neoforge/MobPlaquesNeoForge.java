@@ -1,6 +1,6 @@
 package fuzs.mobplaques.neoforge;
 
-import fuzs.mobplaques.MobPlaques;
+import fuzs.mobplaques.common.MobPlaques;
 import fuzs.puzzleslib.common.api.core.v1.ModConstructor;
 import net.neoforged.fml.common.Mod;
 

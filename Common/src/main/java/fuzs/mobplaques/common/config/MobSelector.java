@@ -1,4 +1,4 @@
-package fuzs.mobplaques.config;
+package fuzs.mobplaques.common.config;
 
 import fuzs.puzzleslib.common.api.init.v3.tags.TagFactory;
 import net.minecraft.client.Minecraft;

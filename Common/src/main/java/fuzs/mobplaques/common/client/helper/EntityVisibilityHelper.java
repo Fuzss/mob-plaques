@@ -1,8 +1,8 @@
-package fuzs.mobplaques.client.helper;
+package fuzs.mobplaques.common.client.helper;
 
-import fuzs.mobplaques.MobPlaques;
-import fuzs.mobplaques.client.handler.PickEntityHandler;
-import fuzs.mobplaques.config.ClientConfig;
+import fuzs.mobplaques.common.MobPlaques;
+import fuzs.mobplaques.common.client.handler.PickEntityHandler;
+import fuzs.mobplaques.common.config.ClientConfig;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.entity.EntityRenderDispatcher;

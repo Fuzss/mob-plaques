@@ -1,7 +1,7 @@
-package fuzs.mobplaques.config;
+package fuzs.mobplaques.common.config;
 
-import fuzs.mobplaques.client.gui.plaque.MobPlaqueRenderer;
-import fuzs.mobplaques.client.handler.MobPlaqueHandler;
+import fuzs.mobplaques.common.client.gui.plaque.MobPlaqueRenderer;
+import fuzs.mobplaques.common.client.handler.MobPlaqueHandler;
 import fuzs.puzzleslib.common.api.config.v3.Config;
 import fuzs.puzzleslib.common.api.config.v3.ConfigCore;
 import fuzs.puzzleslib.common.api.config.v3.ValueCallback;

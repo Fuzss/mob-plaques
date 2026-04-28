@@ -1,6 +1,6 @@
-package fuzs.mobplaques.client.renderer.entity.state;
+package fuzs.mobplaques.common.client.renderer.entity.state;
 
-import fuzs.mobplaques.client.gui.plaque.HealthPlaqueRenderer;
+import fuzs.mobplaques.common.client.gui.plaque.HealthPlaqueRenderer;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.resources.Identifier;
 

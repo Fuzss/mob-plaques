@@ -1,11 +1,11 @@
-package fuzs.mobplaques.client.renderer.rendertype;
+package fuzs.mobplaques.common.client.renderer.rendertype;
 
 import com.mojang.blaze3d.pipeline.DepthStencilState;
 import com.mojang.blaze3d.pipeline.RenderPipeline;
 import com.mojang.blaze3d.platform.CompareOp;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.VertexFormat;
-import fuzs.mobplaques.MobPlaques;
+import fuzs.mobplaques.common.MobPlaques;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.client.renderer.rendertype.RenderSetup;
 import net.minecraft.client.renderer.rendertype.RenderType;

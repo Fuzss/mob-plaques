@@ -1,7 +1,7 @@
-package fuzs.mobplaques.client.handler;
+package fuzs.mobplaques.common.client.handler;
 
-import fuzs.mobplaques.MobPlaques;
-import fuzs.mobplaques.config.ClientConfig;
+import fuzs.mobplaques.common.MobPlaques;
+import fuzs.mobplaques.common.config.ClientConfig;
 import fuzs.puzzleslib.common.api.client.core.v1.context.KeyMappingsContext;
 import fuzs.puzzleslib.common.api.client.key.v1.KeyActivationHandler;
 import fuzs.puzzleslib.common.api.client.key.v1.KeyMappingHelper;

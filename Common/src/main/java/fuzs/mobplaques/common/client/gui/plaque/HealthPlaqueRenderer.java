@@ -1,7 +1,7 @@
-package fuzs.mobplaques.client.gui.plaque;
+package fuzs.mobplaques.common.client.gui.plaque;
 
-import fuzs.mobplaques.MobPlaques;
-import fuzs.mobplaques.client.renderer.entity.state.MobPlaquesRenderState;
+import fuzs.mobplaques.common.MobPlaques;
+import fuzs.mobplaques.common.client.renderer.entity.state.MobPlaquesRenderState;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.Mth;

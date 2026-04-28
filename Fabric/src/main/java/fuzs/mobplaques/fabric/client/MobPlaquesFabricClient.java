@@ -1,7 +1,7 @@
 package fuzs.mobplaques.fabric.client;
 
-import fuzs.mobplaques.MobPlaques;
-import fuzs.mobplaques.client.MobPlaquesClient;
+import fuzs.mobplaques.common.MobPlaques;
+import fuzs.mobplaques.common.client.MobPlaquesClient;
 import fuzs.puzzleslib.common.api.client.core.v1.ClientModConstructor;
 import net.fabricmc.api.ClientModInitializer;
 

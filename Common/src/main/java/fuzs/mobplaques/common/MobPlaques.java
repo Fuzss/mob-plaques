@@ -1,6 +1,6 @@
-package fuzs.mobplaques;
+package fuzs.mobplaques.common;
 
-import fuzs.mobplaques.config.ClientConfig;
+import fuzs.mobplaques.common.config.ClientConfig;
 import fuzs.puzzleslib.common.api.config.v3.ConfigHolder;
 import fuzs.puzzleslib.common.api.core.v1.ModConstructor;
 import net.minecraft.resources.Identifier;

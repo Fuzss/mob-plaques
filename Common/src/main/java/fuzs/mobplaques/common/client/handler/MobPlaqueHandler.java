@@ -1,12 +1,12 @@
-package fuzs.mobplaques.client.handler;
+package fuzs.mobplaques.common.client.handler;
 
 import com.google.common.collect.Lists;
 import com.mojang.blaze3d.vertex.PoseStack;
-import fuzs.mobplaques.MobPlaques;
-import fuzs.mobplaques.client.gui.plaque.*;
-import fuzs.mobplaques.client.helper.EntityVisibilityHelper;
-import fuzs.mobplaques.client.renderer.entity.state.MobPlaquesRenderState;
-import fuzs.mobplaques.config.ClientConfig;
+import fuzs.mobplaques.common.MobPlaques;
+import fuzs.mobplaques.common.client.gui.plaque.*;
+import fuzs.mobplaques.common.client.helper.EntityVisibilityHelper;
+import fuzs.mobplaques.common.client.renderer.entity.state.MobPlaquesRenderState;
+import fuzs.mobplaques.common.config.ClientConfig;
 import fuzs.puzzleslib.common.api.client.renderer.v1.RenderStateExtraData;
 import fuzs.puzzleslib.common.api.event.v1.core.EventResult;
 import net.minecraft.client.Minecraft;
@@ -187,8 +187,8 @@ public class MobPlaqueHandler {
                 if (currentWidth == -1 || maxWidth < currentWidth + PLAQUE_HORIZONTAL_DISTANCE + plaqueWidth) {
                     currentWidth = plaqueWidth;
                     currentMaxHeight = mobPlaqueRenderer.getHeight(renderState);
-                    totalHeight +=
-                            mobPlaqueRenderer.getHeight(renderState) + (totalHeight == -1 ? 0 : PLAQUE_VERTICAL_DISTANCE);
+                    totalHeight += mobPlaqueRenderer.getHeight(renderState) + (totalHeight == -1 ? 0 :
+                            PLAQUE_VERTICAL_DISTANCE);
                 } else {
                     currentWidth += PLAQUE_HORIZONTAL_DISTANCE + plaqueWidth;
                     if (mobPlaqueRenderer.getHeight(renderState) > currentMaxHeight) {
