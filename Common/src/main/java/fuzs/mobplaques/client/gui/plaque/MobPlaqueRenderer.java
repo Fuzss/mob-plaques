@@ -6,7 +6,7 @@ import fuzs.mobplaques.MobPlaques;
 import fuzs.mobplaques.client.renderer.rendertype.ModRenderType;
 import fuzs.mobplaques.client.renderer.entity.state.MobPlaquesRenderState;
 import fuzs.mobplaques.config.ClientConfig;
-import fuzs.puzzleslib.api.config.v3.ValueCallback;
+import fuzs.puzzleslib.common.api.config.v3.ValueCallback;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.renderer.rendertype.RenderType;

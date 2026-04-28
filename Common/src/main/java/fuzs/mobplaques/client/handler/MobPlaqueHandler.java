@@ -7,13 +7,13 @@ import fuzs.mobplaques.client.gui.plaque.*;
 import fuzs.mobplaques.client.helper.EntityVisibilityHelper;
 import fuzs.mobplaques.client.renderer.entity.state.MobPlaquesRenderState;
 import fuzs.mobplaques.config.ClientConfig;
-import fuzs.puzzleslib.api.client.renderer.v1.RenderStateExtraData;
-import fuzs.puzzleslib.api.event.v1.core.EventResult;
+import fuzs.puzzleslib.common.api.client.renderer.v1.RenderStateExtraData;
+import fuzs.puzzleslib.common.api.event.v1.core.EventResult;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.state.EntityRenderState;
-import net.minecraft.client.renderer.state.CameraRenderState;
+import net.minecraft.client.renderer.state.level.CameraRenderState;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.Mth;
@@ -38,7 +38,7 @@ public class MobPlaqueHandler {
             new ToughnessPlaqueRenderer());
     ;
 
-    public static void onExtractRenderState(Entity entity, EntityRenderState entityRenderState, float partialTick) {
+    public static void onExtractEntityRenderState(Entity entity, EntityRenderState entityRenderState, float partialTick) {
         if (entity instanceof LivingEntity livingEntity && canPlaqueRender(livingEntity, partialTick)) {
             MobPlaquesRenderState renderState = new MobPlaquesRenderState();
             RenderStateExtraData.set(entityRenderState, RENDER_STATE_PROPERTY, renderState);

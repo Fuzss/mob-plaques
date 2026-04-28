@@ -1,3 +1,2 @@
 classTweaker    v2  official
 accessible  method  net/minecraft/client/player/LocalPlayer filterHitResult (Lnet/minecraft/world/phys/HitResult;Lnet/minecraft/world/phys/Vec3;D)Lnet/minecraft/world/phys/HitResult;
-accessible  method  net/minecraft/client/renderer/entity/EntityRenderer shouldShowName  (Lnet/minecraft/world/entity/Entity;D)Z

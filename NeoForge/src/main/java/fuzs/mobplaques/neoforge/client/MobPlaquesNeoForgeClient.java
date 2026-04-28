@@ -3,7 +3,7 @@ package fuzs.mobplaques.neoforge.client;
 import fuzs.mobplaques.MobPlaques;
 import fuzs.mobplaques.client.MobPlaquesClient;
 import fuzs.mobplaques.data.client.ModLanguageProvider;
-import fuzs.puzzleslib.api.client.core.v1.ClientModConstructor;
+import fuzs.puzzleslib.common.api.client.core.v1.ClientModConstructor;
 import fuzs.puzzleslib.neoforge.api.data.v2.core.DataProviderHelper;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.fml.common.Mod;

@@ -1,6 +1,6 @@
 package fuzs.mobplaques.config;
 
-import fuzs.puzzleslib.api.init.v3.tags.TagFactory;
+import fuzs.puzzleslib.common.api.init.v3.tags.TagFactory;
 import net.minecraft.client.Minecraft;
 import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.tags.TagKey;
@@ -77,7 +77,7 @@ public enum MobSelector {
 
         @Override
         public boolean appliesToEntity(LivingEntity livingEntity) {
-            return livingEntity.getType().is(BOSSES_ENTITY_TYPE_TAG);
+            return livingEntity.is(BOSSES_ENTITY_TYPE_TAG);
         }
     },
     MOUNT {
@@ -88,7 +88,7 @@ public enum MobSelector {
 
         @Override
         public boolean appliesToEntity(LivingEntity livingEntity) {
-            return livingEntity.getType().is(EntityTypeTags.CAN_EQUIP_SADDLE);
+            return livingEntity.is(EntityTypeTags.CAN_EQUIP_SADDLE);
         }
     };
 

@@ -2,11 +2,11 @@ package fuzs.mobplaques.config;
 
 import fuzs.mobplaques.client.gui.plaque.MobPlaqueRenderer;
 import fuzs.mobplaques.client.handler.MobPlaqueHandler;
-import fuzs.puzzleslib.api.config.v3.Config;
-import fuzs.puzzleslib.api.config.v3.ConfigCore;
-import fuzs.puzzleslib.api.config.v3.ValueCallback;
-import fuzs.puzzleslib.api.config.v3.serialization.ConfigDataSet;
-import fuzs.puzzleslib.api.config.v3.serialization.KeyedValueProvider;
+import fuzs.puzzleslib.common.api.config.v3.Config;
+import fuzs.puzzleslib.common.api.config.v3.ConfigCore;
+import fuzs.puzzleslib.common.api.config.v3.ValueCallback;
+import fuzs.puzzleslib.common.api.config.v3.serialization.ConfigDataSet;
+import fuzs.puzzleslib.common.api.config.v3.serialization.KeyedValueProvider;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;

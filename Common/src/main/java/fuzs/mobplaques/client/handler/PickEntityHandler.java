@@ -2,7 +2,7 @@ package fuzs.mobplaques.client.handler;
 
 import fuzs.mobplaques.MobPlaques;
 import fuzs.mobplaques.config.ClientConfig;
-import fuzs.puzzleslib.api.util.v1.EntityHelper;
+import fuzs.puzzleslib.common.api.util.v1.EntityHelper;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
