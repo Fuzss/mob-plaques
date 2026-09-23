@@ -7,7 +7,7 @@ import fuzs.mobplaques.common.client.gui.plaque.*;
 import fuzs.mobplaques.common.client.helper.EntityVisibilityHelper;
 import fuzs.mobplaques.common.client.renderer.entity.state.MobPlaquesRenderState;
 import fuzs.mobplaques.common.config.ClientConfig;
-import fuzs.puzzleslib.common.api.client.renderer.v1.RenderStateExtraData;
+import fuzs.puzzleslib.common.api.client.renderer.v2.RenderStateExtraData;
 import fuzs.puzzleslib.common.api.event.v1.core.EventResult;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.SubmitNodeCollector;
@@ -79,7 +79,7 @@ public class MobPlaqueHandler {
                 poseStack.translate(nameTagAttachment.x, nameTagAttachment.y + 0.5, nameTagAttachment.z);
             }
 
-            poseStack.mulPose(cameraRenderState.orientation);
+            poseStack.rotate(cameraRenderState.orientation);
             float plaqueScale = getPlaqueScale(entityRenderState.distanceToCameraSq);
             poseStack.scale(0.025F * plaqueScale, -0.025F * plaqueScale, 0.025F * plaqueScale);
             MobPlaquesRenderState renderState = RenderStateExtraData.get(entityRenderState, RENDER_STATE_PROPERTY);

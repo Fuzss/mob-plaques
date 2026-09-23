@@ -68,6 +68,7 @@ public abstract class MobPlaqueRenderer {
             RenderType renderType =
                     MobPlaques.CONFIG.get(ClientConfig.class).behindWalls ? RenderTypes.textBackgroundSeeThrough() :
                             ModRenderType.textBackground();
+            submitNodeCollector.submitTextBackground();
             submitNodeCollector.submitCustomGeometry(poseStack,
                     renderType,
                     (PoseStack.Pose pose, VertexConsumer vertexConsumer) -> {
