@@ -1,18 +1,14 @@
 package fuzs.mobplaques.common.client.gui.plaque;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
 import fuzs.mobplaques.common.MobPlaques;
 import fuzs.mobplaques.common.client.renderer.entity.state.MobPlaquesRenderState;
-import fuzs.mobplaques.common.client.renderer.rendertype.ModRenderType;
 import fuzs.mobplaques.common.config.ClientConfig;
 import fuzs.puzzleslib.common.api.config.v3.ValueCallback;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.state.EntityRenderState;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.data.AtlasIds;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -20,13 +16,12 @@ import net.minecraft.network.chat.contents.objects.AtlasSprite;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.ARGB;
 import net.minecraft.util.FormattedCharSequence;
+import net.minecraft.util.LightCoordsUtil;
 import net.minecraft.world.entity.LivingEntity;
 import net.neoforged.neoforge.common.ModConfigSpec;
-import org.joml.Matrix4f;
 
 public abstract class MobPlaqueRenderer {
-    protected static final int FULL_BRIGHTNESS_PACKED_LIGHT = 0XF000F0;
-    protected static final int BACKGROUND_BORDER_SIZE = 1;
+    private static final int BACKGROUND_BORDER_SIZE = 1;
 
     protected boolean allowRendering;
 
@@ -65,33 +60,23 @@ public abstract class MobPlaqueRenderer {
     private void submitTextBackground(PoseStack poseStack, int posX, int posY, SubmitNodeCollector submitNodeCollector, EntityRenderState entityRenderState, MobPlaquesRenderState renderState) {
         if (MobPlaques.CONFIG.get(ClientConfig.class).renderBackground) {
             int backgroundColor = Minecraft.getInstance().options.getBackgroundColor(0.25F);
-            RenderType renderType =
-                    MobPlaques.CONFIG.get(ClientConfig.class).behindWalls ? RenderTypes.textBackgroundSeeThrough() :
-                            ModRenderType.textBackground();
-            submitNodeCollector.submitTextBackground();
-            submitNodeCollector.submitCustomGeometry(poseStack,
-                    renderType,
-                    (PoseStack.Pose pose, VertexConsumer vertexConsumer) -> {
-                        Matrix4f matrix4f = pose.pose();
-                        int minX = posX - this.getWidth(renderState) / 2;
-                        int minY = posY;
-                        int maxX = posX + this.getWidth(renderState) / 2;
-                        int maxY = posY + this.getHeight(renderState);
-                        int packedLight = MobPlaques.CONFIG.get(ClientConfig.class).fullBrightness ?
-                                FULL_BRIGHTNESS_PACKED_LIGHT : entityRenderState.lightCoords;
-                        vertexConsumer.addVertex(matrix4f, minX, minY, 0.0F)
-                                .setColor(backgroundColor)
-                                .setLight(packedLight);
-                        vertexConsumer.addVertex(matrix4f, minX, maxY, 0.0F)
-                                .setColor(backgroundColor)
-                                .setLight(packedLight);
-                        vertexConsumer.addVertex(matrix4f, maxX, maxY, 0.0F)
-                                .setColor(backgroundColor)
-                                .setLight(packedLight);
-                        vertexConsumer.addVertex(matrix4f, maxX, minY, 0.0F)
-                                .setColor(backgroundColor)
-                                .setLight(packedLight);
-                    });
+            int minX = posX - this.getWidth(renderState) / 2;
+            int minY = posY;
+            int maxX = posX + this.getWidth(renderState) / 2;
+            int maxY = posY + this.getHeight(renderState);
+            Font.DisplayMode displayMode =
+                    MobPlaques.CONFIG.get(ClientConfig.class).behindWalls ? Font.DisplayMode.SEE_THROUGH :
+                            Font.DisplayMode.NORMAL;
+            int lightCoords = MobPlaques.CONFIG.get(ClientConfig.class).fullBrightness ? LightCoordsUtil.FULL_BRIGHT :
+                    entityRenderState.lightCoords;
+            submitNodeCollector.submitTextBackground(poseStack,
+                    minX,
+                    minY,
+                    maxX,
+                    maxY,
+                    backgroundColor,
+                    displayMode,
+                    lightCoords);
         }
     }
 
@@ -99,7 +84,7 @@ public abstract class MobPlaqueRenderer {
         FormattedCharSequence formattedCharSequence = this.getComponent(renderState).getVisualOrderText();
         int x = posX - this.getWidth(renderState) / 2 + BACKGROUND_BORDER_SIZE;
         int y = posY + BACKGROUND_BORDER_SIZE + 1;
-        int packedLight = MobPlaques.CONFIG.get(ClientConfig.class).fullBrightness ? FULL_BRIGHTNESS_PACKED_LIGHT :
+        int lightCoords = MobPlaques.CONFIG.get(ClientConfig.class).fullBrightness ? LightCoordsUtil.FULL_BRIGHT :
                 entityRenderState.lightCoords;
         if (MobPlaques.CONFIG.get(ClientConfig.class).behindWalls) {
             // this does not respect the light level, use some very low alpha so it does not appear too bright
@@ -110,7 +95,7 @@ public abstract class MobPlaqueRenderer {
                             formattedCharSequence,
                             MobPlaques.CONFIG.get(ClientConfig.class).renderTextShadow,
                             Font.DisplayMode.SEE_THROUGH,
-                            packedLight,
+                            lightCoords,
                             ARGB.color(MobPlaques.CONFIG.get(ClientConfig.class).fullBrightness ? 0x80 : 0x20,
                                     this.getColor(renderState)),
                             0,
@@ -124,7 +109,7 @@ public abstract class MobPlaqueRenderer {
                         formattedCharSequence,
                         MobPlaques.CONFIG.get(ClientConfig.class).renderTextShadow,
                         Font.DisplayMode.NORMAL,
-                        packedLight,
+                        lightCoords,
                         ARGB.opaque(this.getColor(renderState)),
                         0,
                         0);
