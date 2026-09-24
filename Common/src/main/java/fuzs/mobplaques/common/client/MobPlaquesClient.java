@@ -9,7 +9,6 @@ import fuzs.puzzleslib.common.api.client.event.v1.ClientTickEvents;
 import fuzs.puzzleslib.common.api.client.event.v1.renderer.ComputeCameraAnglesCallback;
 import fuzs.puzzleslib.common.api.client.event.v1.renderer.ExtractEntityRenderStateCallback;
 import fuzs.puzzleslib.common.api.client.event.v1.renderer.SubmitNameTagCallback;
-import net.minecraft.client.Minecraft;
 
 public class MobPlaquesClient implements ClientModConstructor {
 
@@ -22,9 +21,7 @@ public class MobPlaquesClient implements ClientModConstructor {
         ExtractEntityRenderStateCallback.EVENT.register(MobPlaqueHandler::onExtractEntityRenderState);
         SubmitNameTagCallback.EVENT.register(MobPlaqueHandler::onSubmitNameTag);
         ComputeCameraAnglesCallback.EVENT.register((camera, partialTick, pitch, yaw, roll) -> {
-            PickEntityHandler.onBeforeGameRender(Minecraft.getInstance(),
-                    Minecraft.getInstance().gameRenderer,
-                    Minecraft.getInstance().getDeltaTracker());
+            PickEntityHandler.onComputeCameraAngles(camera, partialTick);
         });
         ClientTickEvents.START.register(PickEntityHandler::onStartClientTick);
     }
