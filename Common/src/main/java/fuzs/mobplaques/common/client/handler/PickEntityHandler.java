@@ -2,6 +2,7 @@ package fuzs.mobplaques.common.client.handler;
 
 import fuzs.mobplaques.common.MobPlaques;
 import fuzs.mobplaques.common.config.ClientConfig;
+import fuzs.puzzleslib.common.api.event.v1.data.MutableFloat;
 import fuzs.puzzleslib.common.api.util.v1.EntityHelper;
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
@@ -40,7 +41,11 @@ public class PickEntityHandler {
         return crosshairPickEntity;
     }
 
-    public static void onComputeCameraAngles(Camera camera, float partialTick) {
+    /**
+     * Runs exactly once per frame before {@link net.minecraft.client.renderer.GameRenderer#extract}, so the pick is up
+     * to date when entity and GUI render states are extracted later in the same frame.
+     */
+    public static void onComputeFieldOfView(Camera camera, float partialTick, MutableFloat fov) {
         if (!MobPlaques.CONFIG.get(ClientConfig.class).allowRendering.get()) {
             return;
         }
